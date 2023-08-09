@@ -8,12 +8,9 @@ public class ConsoleProgress implements Runnable {
     public void run() {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
-                    for (int i = 0; i < 8; i++) {
+                    for (char ch : process) {
                         Thread.sleep(500);
-                        System.out.print("\r load: " + process[i]);
-                        if (i == 8) {
-                            i = 0;
-                        }
+                        System.out.print("\r load: " + ch);
                     }
                 }
             } catch (InterruptedException e) {
