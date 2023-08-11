@@ -4,13 +4,18 @@ public class DCLSingleton {
 
     private volatile static DCLSingleton inst;
 
-    public synchronized static DCLSingleton instOf() {
+    public static DCLSingleton instOf() {
         if (inst == null) {
-            inst = new DCLSingleton();
+            synchronized (DCLSingleton.class) {
+                if (inst == null) {
+                    inst = new DCLSingleton();
+                }
+            }
         }
         return inst;
     }
 
     private DCLSingleton() {
     }
+
 }
